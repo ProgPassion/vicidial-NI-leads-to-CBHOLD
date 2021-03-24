@@ -2,7 +2,7 @@
 
 	$date = date("Y-m-d");
   
-  //assuming that the cron user credencials are like this
+  	//assuming that the cron user credencials are like this
 	$conn = new mysqli("localhost", "cron", "1234", "asterisk");
 
 	if($conn->connect_errno) {
