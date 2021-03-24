@@ -47,7 +47,7 @@
 
 	function setNILeadsToCallBack($date) {
 
-		$result = queryExec("SELECT lead_id, list_id, user, modify_date FROM vicidial_list WHERE status='NONIN' AND phone_code='39' AND modify_date LIKE'$date%'");
+		$result = queryExec("SELECT lead_id, list_id, user, modify_date FROM vicidial_list WHERE status='NI' AND modify_date LIKE'$date%'");
 		
 		while($row = $result->fetch_array(MYSQLI_ASSOC)) {
 			$lead_id = $row['lead_id'];
