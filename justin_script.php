@@ -40,8 +40,19 @@
 		$lead_year  = $lead_date_array[0];
 		$lead_month = $lead_date_array[1];
 		$lead_day   = $lead_date_array[2];
-
-		return date("Y-m-d", mktime(0, 0, 0, $lead_month, $lead_day, $lead_year) + (86400 * 120)) . " " . $time_from_date;		
+		
+		if(date("l", mktime(0, 0, 0, $lead_month, $lead_day, $lead_year) + (86400 * 120)) == "Saturday") { 
+			//Add plus 2 days to put the callback for the Monday if rescheduling day happens to be Saturday
+			return date("Y-m-d", mktime(0, 0, 0, $lead_month, $lead_day, $lead_year) + (86400 * 122)) . " " . $time_from_date; 
+		}
+		elseif(date("l", mktime(0, 0, 0, $lead_month, $lead_day, $lead_year) + (86400 * 120)) == "Sunday") {
+			//Add plus 1 day to put the callback for the Monday if rescheduling day happens to be Sunday
+			return date("Y-m-d", mktime(0, 0, 0, $lead_month, $lead_day, $lead_year) + (86400 * 121)) . " " . $time_from_date;
+		}
+		else {
+			return date("Y-m-d", mktime(0, 0, 0, $lead_month, $lead_day, $lead_year) + (86400 * 120)) . " " . $time_from_date;
+		}
+				
 	}
 
 
